@@ -1,0 +1,13 @@
+<?php
+
+// Formato de fecha: día-mes-año
+echo date("d-m-Y") . "<br>";
+
+// Formato de hora: horas:minutos:segundos
+echo date("H:i:s") . "<br>";
+
+// Formato de fecha y hora: día-mes-año horas:minutos:segundos
+echo date("d-m-Y H:i:s") . "<br>";
+
+// Formato de fecha y hora personalizado: el día de la semana, el día del mes con el sufijo ordinal, el mes en tres letras, el año
+echo date("l jS \of F Y h:i:s A") . "<br>";
