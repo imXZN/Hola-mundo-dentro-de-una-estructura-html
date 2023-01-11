@@ -15,6 +15,6 @@ switch ($nota) {
         echo "Sobresaliente";
         break;
     default:
-        echo "Nota no válida";
+        echo "No es válido";
 }
 ?>
