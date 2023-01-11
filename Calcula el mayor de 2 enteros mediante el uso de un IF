@@ -1,10 +1,10 @@
 <?php
-$num1 = 5;
-$num2 = 8;
+$numero1 = 5;
+$numero2 = 8;
 
 if ($num1 > $num2) {
-    echo $num1 . " es mayor que " . $num2;
+    echo $numero1 . " es mayor que " . $numero2;
 } else {
-    echo $num2 . " es mayor que " . $num1;
+    echo $numero2 . " es mayor que " . $numero1;
 }
 ?>
