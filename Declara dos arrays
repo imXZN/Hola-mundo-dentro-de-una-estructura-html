@@ -1,0 +1,46 @@
+<?php
+
+// Declaración de los arrays
+$motos = array("Honda", "Yamaha", "Suzuki", "Kawasaki");
+$coches = array("Ford", "Chevrolet", "Toyota", "Nissan");
+
+// Declaracion de la funcion 
+function mostrarResultadosOrdenados($vehiculos) {
+    sort($vehiculos); // Ordenamiento del array
+    foreach ($vehiculos as $vehiculo) { // Recorrido del array
+        echo $vehiculo . "<br>";
+    }
+    echo "Existen " . count($vehiculos) . " elementos en el array" . "<br>"; // Indicando la cantidad de elementos
+}
+
+// a) Recorrido del array de motos
+foreach ($motos as $moto) {
+    echo $moto . "<br>";
+}
+
+echo "<br>";
+
+// b) Ordenamiento y recorrido del array de coches
+sort($coches);
+foreach ($coches as $coche) {
+    echo $coche . "<br>";
+}
+
+echo "<br>";
+
+// c) llamada a la funcion 
+mostrarResultadosOrdenados($motos);
+
+echo "<br>";
+
+mostrarResultadosOrdenados($coches);
+
+// e) busca un elemento y si se encuentra informa
+$buscar = "Honda";
+if (in_array($buscar, $motos)) {
+    echo $buscar . " se encuentra en el array de motos.";
+} else {
+    echo $buscar . " no se encuentra en el array de motos.";
+}
+
+?>
