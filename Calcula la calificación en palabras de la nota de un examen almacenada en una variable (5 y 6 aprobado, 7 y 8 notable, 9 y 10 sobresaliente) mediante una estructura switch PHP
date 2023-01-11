@@ -1,5 +1,5 @@
 <?php
-$nota = 7;
+$nota = 12;
 
 switch ($nota) {
     case 5:
@@ -14,7 +14,10 @@ switch ($nota) {
     case 10:
         echo "Sobresaliente";
         break;
+    case $nota >= 0 && $nota < 5;
+        echo "Suspenso";
+        break;
     default:
-        echo "No es válido";
+        echo "El valor es erroneo";
 }
 ?>
