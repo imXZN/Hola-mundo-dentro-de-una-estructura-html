@@ -21,3 +21,36 @@ switch ($nota) {
         echo "El valor es erroneo";
 }
 ?>
+
+TAMBIEN SIRVE
+
+<?php
+$nota = 12;
+
+switch ($nota) {
+    case 5:
+    case 6:
+        echo "Aprobado";
+        break;
+    case 7:
+    case 8:
+        echo "Notable";
+        break;
+    case 9:
+    case 10:
+        echo "Sobresaliente";
+        break;
+    case 4:
+    case 3:
+    case 2:
+    case 1:
+    case 0:
+        echo "Suspenso";
+        break;
+        
+    default:
+        echo "El valor es erroneo";
+    default:
+        echo "El valor es erroneo";
+}
+?>
