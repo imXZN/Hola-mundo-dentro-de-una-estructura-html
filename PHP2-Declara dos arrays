@@ -35,6 +35,8 @@ echo "<br>";
 
 mostrarResultadosOrdenados($coches);
 
+echo "<br>";
+
 // e) busca un elemento y si se encuentra informa
 $buscar = "Honda";
 if (in_array($buscar, $motos)) {
