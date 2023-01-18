@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+	<H2>PHP FORM VALIDATION EXAMPLE</H2>
+      <form action="tareaweb.php" method="post">
+            <p>Name: <input type="text" name="nombre"></p>
+            
+            Email: <input type="text" name="email">
+            
+            <p>Website: <input type="text" name="website"></p>
+            
+            <p>Comment: <textarea rows="5" cols="30"></textarea></p>
+            
+            <p>
+            
+            Gender:
+            <input type="radio" name="gender" value="male">Male 
+ 
+            <input type="radio" name="gender" value="female">Female
+          
+            <input type="radio" name="gender" value="other">Other
+         
+            </p>
+            
+            <input type="submit" value="Submit">
+      
+      </form>
+
+</body>
+</html>
+
+<html>
+<?php
+$name = $_POST["name"];
+$email = $_POST["email"];
+$website = $_POST["website"];
+echo "Nombre: " . $name . "<br>";
+echo "Email: " . $email . "<br>";
+echo "Website: " . $website . "<br>";
+?>
+</html>
+
+
