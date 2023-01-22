@@ -50,7 +50,5 @@ switch ($nota) {
         
     default:
         echo "El valor es erroneo";
-    default:
-        echo "El valor es erroneo";
 }
 ?>
