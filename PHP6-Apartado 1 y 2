@@ -1,26 +1,66 @@
-Apartado 1:
+//Añadir un nuevo botón en la vista de detalle de la entrada, junto a los botones "Editar" y "Volver". 
+//Este botón debe tener un enlace que lleve a una nueva vista para confirmar el borrado de la entrada.
 
-from django.shortcuts import render, get_object_or_404, redirect
-
-def delete_entry(request, pk):
-    entry = get_object_or_404(Entry, pk=pk)
-    entry.delete()
-    return redirect('blog_list')
-
-# Add this to your urls.py
-path('entry/<int:pk>/delete/', delete_entry, name='entry_delete')
-
-# Add a delete button to your template
-<a href="{% url 'entry_delete' entry.pk %}">Delete</a>
+        <!-- Vista de detalle de entrada -->
+        <h2><?php echo $post['title']; ?></h2>
+        <p><?php echo $post['content']; ?></p>
+        <p><strong>Fecha de publicación:</strong> <?php echo $post['created_at']; ?></p>
+        <a href="edit_post.php?id=<?php echo $post['id']; ?>">Editar</a>
+        <a href="delete_post.php?id=<?php echo $post['id']; ?>">Borrar</a>
+        <a href="index.php">Volver</a>
 
 
+//Crear una nueva vista "delete_post.php" que muestre un mensaje de confirmación y un formulario para 
+//confirmar el borrado de la entrada. Este formulario debe tener un botón "Eliminar" que envíe una solicitud POST al servidor para eliminar la entrada.
 
 
-Apartado 2:
+        <!-- Vista de confirmación de borrado -->
+        <h2>¿Está seguro de que desea borrar esta entrada?</h2>
+        <p><?php echo $post['title']; ?></p>
+        <form method="post">
+        <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
+        <button type="submit">Eliminar</button>
+        <a href="post.php?id=<?php echo $post['id']; ?>">Cancelar</a>
+        </form>
 
-from django.utils import timezone
+//En el controlador "delete_post.php", comprobar si se ha enviado una solicitud POST para 
+//eliminar la entrada y, si es así, eliminar la entrada de la base de datos y redirigir al usuario a la página principal.
 
-class Entry(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
+        // Controlador para eliminar una entrada
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $id = $_POST['id'];
+
+        // Conectar a la base de datos
+
+        // Eliminar la entrada de la base de datos
+        $stmt = $pdo->prepare('DELETE FROM posts WHERE id = ?');
+        $stmt->execute([$id]);
+
+        // Redirigir al usuario a la página principal
+        header('Location: index.php');
+        exit();
+        }
+        
+      
+      
+//Apartado 2:
+//Para que la fecha de la entrada se genere automáticamente por la aplicación en la aplicación Blog, podemos seguir los siguientes pasos:
+
+        //Añadir una nueva columna "created_at" a la tabla "posts" en la base de datos. 
+        //Esta columna debe tener un tipo de datos "DATETIME" y un valor predeterminado de la función "NOW()", que devuelve la fecha y hora actuales del servidor.
+
+        ALTER TABLE posts ADD COLUMN created_at DATETIME DEFAULT NOW() AFTER content;
+        Modificar el controlador "add_post.php" para que la fecha de la entrada se inserte automáticamente en la base de datos en lugar de obtenerla del formulario.
+
+        // Controlador para añadir una entrada
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+
+        // Conectar a la base de datos
+
+        // Insertar la entrada en la base de datos
+        $stmt = $pdo->prepare('INSERT INTO posts (title, content) VALUES (?, ?)');
+        $stmt->execute([$title, $content]);
+
+        //
